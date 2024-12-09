@@ -3,18 +3,24 @@ package com.example.trialworkbackend.entities;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
+    @Column(name = "username", nullable = false)
     private String username;
 
+    @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "firstLogin")
     private boolean firstLogin;
 
     public User(String username, String email, String password, boolean firstLogin) {
