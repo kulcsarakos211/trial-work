@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaderResponse, HttpHeaders, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../model/user'
+import { Globals } from '../globals';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +16,12 @@ export class UserService {
   }
 
   public findAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl);
+    let headers = new HttpHeaders();
+    headers = headers.append('asd', 'true');
+    return this.http.get<User[]>(this.usersUrl, { headers: Globals.SERVICE_HEADERS });
   }
 
   public save(user: User) {
-    return this.http.post<User>(this.usersUrl, user);
+    return this.http.post<User>(this.usersUrl, user, { headers: Globals.SERVICE_HEADERS });
   }
 }
