@@ -23,25 +23,15 @@ public class User {
     @Column(name = "firstLogin")
     private boolean firstLogin;
 
-    public User(String username, String email, String password, boolean firstLogin) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.firstLogin = firstLogin;
-    }
-
-    public User(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.firstLogin = true;
-    }
+    @Column(name = "isAdmin", nullable = false)
+    private boolean admin;
 
     public User() {
         this.username = "";
         this.email = "";
         this.password = "";
         this.firstLogin = true;
+        this.admin = false;
     }
 
     public long getId() {
@@ -82,6 +72,14 @@ public class User {
 
     public void setFirstLogin(boolean firstLogin) {
         this.firstLogin = firstLogin;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     @Override
