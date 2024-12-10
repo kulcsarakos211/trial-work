@@ -10,11 +10,11 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
+    private final UserRepository userRepository;
+
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
-    private final UserRepository userRepository;
 
     @GetMapping("/users")
     public List<User> getUsers() {

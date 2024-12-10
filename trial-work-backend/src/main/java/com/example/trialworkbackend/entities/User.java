@@ -2,6 +2,8 @@ package com.example.trialworkbackend.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -20,11 +22,18 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "firstLogin")
+    @Column(name = "first_login")
     private boolean firstLogin;
 
-    @Column(name = "isAdmin", nullable = false)
+    @Column(name = "is_admin", nullable = false)
     private boolean admin;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "owner")
+    private List<Room> ownedRooms;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "recipient")
+    private List<Notification> notifications;
+
 
     public User() {
         this.username = "";

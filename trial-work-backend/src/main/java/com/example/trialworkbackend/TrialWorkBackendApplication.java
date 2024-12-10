@@ -1,17 +1,13 @@
 package com.example.trialworkbackend;
 
-import com.example.trialworkbackend.entities.Room;
-import com.example.trialworkbackend.entities.User;
-import com.example.trialworkbackend.repositories.RoomRepository;
-import com.example.trialworkbackend.repositories.UserRepository;
+import com.example.trialworkbackend.entities.Toggle;
+import com.example.trialworkbackend.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-
-import java.util.stream.Stream;
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class, UserDetailsServiceAutoConfiguration.class})
 public class TrialWorkBackendApplication {
@@ -21,10 +17,9 @@ public class TrialWorkBackendApplication {
     }
 
     @Bean
-    CommandLineRunner init(UserRepository userRepository, RoomRepository roomRepository) {
+    CommandLineRunner init(UserRepository userRepository, RoomRepository roomRepository, NotificationRepository notificationRepository, RoomTogglesRepository roomTogglesRepository, ToggleRepository toggleRepository) {
         return args -> {
-            userRepository.findAll().forEach(System.out::println);
-            roomRepository.findAll().forEach(System.out::println);
+            toggleRepository.save(new Toggle());
         };
     }
 }

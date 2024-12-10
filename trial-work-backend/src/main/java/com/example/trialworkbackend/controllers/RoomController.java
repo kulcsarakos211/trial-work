@@ -17,12 +17,12 @@ public class RoomController {
     }
 
     @GetMapping("/rooms")
-    public List<Room> getAllRooms() {
+    public List<Room> getRooms() {
         return (List<Room>) roomRepository.findAll();
     }
 
     @PostMapping("/rooms")
-    public Room createRoom(@RequestBody Room room) {
-        return roomRepository.save(room);
+    void addRoom(@RequestBody Room room) {
+        roomRepository.save(room);
     }
 }
