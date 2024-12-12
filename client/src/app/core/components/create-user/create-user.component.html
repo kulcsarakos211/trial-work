@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center mt-5">
+        <h2>Register a new user</h2>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+        <p>Enter the email of the user you want to register. The default password is 'secretpassword'</p>
+    </div>
+    <form class="createUserForm" (ngSubmit)="onSubmit()" #createUserForm="ngForm">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" [(ngModel)]="user.email" 
+            class="form-control input-lg"
+            type="email"
+            id="email"
+            name="email" 
+            placeholder="john.doe@example.com"
+            required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" #email="ngModel">
+        </div>
+        <div [hidden]="!email.hasError('pattern')" class="alert alert-danger alert-div">Email address is required</div>
+        <div [hidden]="!userExists" class="alert alert-danger alert-div">The email adress is already registered</div>
+        <div class="form-group">
+            <button type="submit" [disabled]="!createUserForm.form.valid" class="btn btn-success btn-lg">Create user</button>
+        </div>
+    </form>
+</div>

@@ -16,8 +16,8 @@ public class NotificationController {
         this.notificationRepository = notificationRepository;
     }
 
-    @GetMapping("/notifications/{id}")
-    public List<Notification> getMessagesByUserId(@PathVariable long id) {
+    @GetMapping(value = "/notifications", params = "id")
+    public List<Notification> getMessagesByUserId(@RequestParam("id") long id) {
         return notificationRepository.getAllByUserId(id);
     }
 

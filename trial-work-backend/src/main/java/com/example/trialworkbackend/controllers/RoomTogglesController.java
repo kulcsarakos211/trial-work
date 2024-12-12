@@ -16,8 +16,8 @@ public class RoomTogglesController {
         this.roomTogglesRepository = roomTogglesRepository;
     }
 
-    @GetMapping("/room/toggles/{id}")
-    public List<RoomToggles> getRoomTogglesByRoomId(@PathVariable("id") long id) {
+    @GetMapping(value = "/room/toggles", params = "id")
+    public List<RoomToggles> getRoomTogglesByRoomId(@RequestParam("id") long id) {
         return roomTogglesRepository.getAllByRoomId(id);
     }
 

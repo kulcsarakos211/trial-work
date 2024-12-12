@@ -11,7 +11,7 @@ export class User {
         this.username = "";
         this.email = "";
         this.password = "";
-        this.firstLogin = false;
+        this.firstLogin = true;
         this.admin = false;
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'client';
+  @HostListener("window:beforeunload", ["$event"])
+  clearLocalStorage() {
+    localStorage.clear();
+  }
 }

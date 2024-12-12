@@ -11,7 +11,6 @@ public class AuthenticationService {
     private static final String AUTH_TOKEN_VALUE = "app";
 
     public static Authentication getAuthentication(HttpServletRequest request) {
-        request.getHeaderNames().asIterator().forEachRemaining(System.out::println);
         String apiKey = request.getHeader(AUTH_TOKEN_HEADER_NAME);
         if (apiKey == null || !apiKey.equals(AUTH_TOKEN_VALUE)) {
             throw new BadCredentialsException("Invalid API Key");

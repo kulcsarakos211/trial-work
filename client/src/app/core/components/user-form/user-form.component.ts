@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { User } from '../model/user';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../service/user.service';
+import { User } from '../../models/user/user';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user-service/user.service';
+import { NavbarService } from '../../../shared/services/navbar-service/navbar.service';
 
 @Component({
   selector: 'app-user-form',
@@ -14,7 +15,7 @@ export class UserFormComponent {
 
   user: User;
 
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) {
+  constructor(private navbarSerice: NavbarService, private router: Router, private userService: UserService) {
     this.user = new User();
   }
 
@@ -24,6 +25,10 @@ export class UserFormComponent {
 
   gotoUserList() {
     this.router.navigate(['/users']);
+  }
+
+  ngOnInit() {
+    this.navbarSerice.show();
   }
 
 }

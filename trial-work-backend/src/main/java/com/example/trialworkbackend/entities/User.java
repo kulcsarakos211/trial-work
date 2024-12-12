@@ -1,6 +1,7 @@
 package com.example.trialworkbackend.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "first_login")
+    @Column(name = "first_login", nullable = false)
     private boolean firstLogin;
 
     @Column(name = "is_admin", nullable = false)
@@ -34,6 +35,12 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "recipient")
     private List<Notification> notifications;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "members",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "room_id", referencedColumnName = "id", nullable = false)
+    )
+    private List<Room> memberships;
 
     public User() {
         this.username = "";
@@ -89,6 +96,10 @@ public class User {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public List<Room> getMemberships() {
+        return memberships;
     }
 
     @Override

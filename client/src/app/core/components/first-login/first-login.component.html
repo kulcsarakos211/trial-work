@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center">
+        <p>Before proceeding, please change your password and set a username</p>
+    </div>
+    <form class="firstLoginForm" (ngSubmit)="onSubmit()" #firstLoginForm="ngForm">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" [(ngModel)]="user.username" 
+            class="form-control input-lg"
+            type="username"
+            id="username"
+            name="username" 
+            placeholder="johndoe123"
+            required minlength="5" #username="ngModel">
+        </div>
+        <div [hidden]="!username.hasError('minlength')" class="alert alert-danger alert-div">Username must be at least 5 characters long</div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" [(ngModel)]="user.password" 
+            class="form-control input-lg"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="password"
+            required minlength="8" #password="ngModel">
+        </div>
+        <div [hidden]="!password.hasError('minlength')" class="alert alert-danger alert-div">Password must be at least 8 characters long</div>
+        <div [hidden]="!usernameTaken" class="alert alert-danger alert-div">Username is already taken</div>
+        <div class="form-group">
+            <button type="submit" [disabled]="!firstLoginForm.form.valid" class="btn btn-success btn-lg">Log in</button>
+        </div>
+    </form>
+</div>

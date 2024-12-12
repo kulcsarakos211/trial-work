@@ -15,6 +15,22 @@ public class RoomTogglesId {
         this.roomId = roomId;
     }
 
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
+
+    public long getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(long roomId) {
+        this.roomId = roomId;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

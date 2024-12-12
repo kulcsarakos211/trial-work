@@ -1,6 +1,5 @@
 package com.example.trialworkbackend;
 
-import com.example.trialworkbackend.entities.Toggle;
 import com.example.trialworkbackend.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +18,6 @@ public class TrialWorkBackendApplication {
     @Bean
     CommandLineRunner init(UserRepository userRepository, RoomRepository roomRepository, NotificationRepository notificationRepository, RoomTogglesRepository roomTogglesRepository, ToggleRepository toggleRepository) {
         return args -> {
-            toggleRepository.save(new Toggle());
         };
     }
 }
