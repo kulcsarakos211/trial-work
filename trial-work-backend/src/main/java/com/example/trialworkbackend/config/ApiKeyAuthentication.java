@@ -1,4 +1,4 @@
-package com.example.trialworkbackend.security;
+package com.example.trialworkbackend.config;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,4 +1,4 @@
-package com.example.trialworkbackend.security;
+package com.example.trialworkbackend.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

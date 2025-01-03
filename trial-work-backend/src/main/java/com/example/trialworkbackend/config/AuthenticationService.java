@@ -1,4 +1,4 @@
-package com.example.trialworkbackend.security;
+package com.example.trialworkbackend.config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.authentication.BadCredentialsException;
