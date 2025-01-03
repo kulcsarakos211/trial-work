@@ -33,6 +33,11 @@ public class RoomController {
         return roomRepository.findAllByUserId(userId);
     }
 
+    @GetMapping(value = "/rooms", params = "id")
+    public Room getRoom(@RequestParam("id") long id) {
+        return roomRepository.findById(id);
+    }
+
     @PostMapping("/rooms")
     void addRoom(@RequestBody Room room) {
         roomRepository.save(room);

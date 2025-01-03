@@ -18,6 +18,10 @@ export class RoomService {
     return this.http.get<Room[]>(this.roomsUrl);
   }
 
+  public findById(id: number): Observable<Room | null> {
+    return this.http.get<Room | null>(`${this.roomsUrl}?id=${id}`);
+  }
+
   public findAllByUserId(userId: number): Observable<Room[]> {
     return this.http.get<Room[]>(`${this.roomsUrl}?userId=${userId}`);
   }

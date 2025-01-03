@@ -8,7 +8,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let room of rooms">
-                <td>{{ room.name }}</td>
+                <td class="clickable" [routerLink]="['/room/', room.id]">{{ room.name }}</td>
             </tr>
             </tbody>
         </table>
