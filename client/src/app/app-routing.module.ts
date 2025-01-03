@@ -10,6 +10,7 @@ import { adminGuard } from './shared/route-guards/admin-guard/admin.guard';
 import { FirstLoginComponent } from './core/components/first-login/first-login.component';
 import { firstLoginGuard } from './shared/route-guards/first-login-guard/first-login.guard';
 import { RoomListComponent } from './core/components/room-list/room-list/room-list.component';
+import { RequestApiKeyComponent } from './core/components/request-api-key/request-api-key/request-api-key.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'adduser', component: UserFormComponent },
   { path: 'register', component: CreateUserComponent, canActivate: [adminGuard] },
   { path: 'first-login', component: FirstLoginComponent, canActivate: [firstLoginGuard] },
-  { path: 'rooms', component: RoomListComponent, canActivate: [loggedInGuard] }
+  { path: 'rooms', component: RoomListComponent, canActivate: [loggedInGuard] },
+  { path: 'apikey', component: RequestApiKeyComponent, canActivate: [adminGuard] }
 ];
 
 @NgModule({

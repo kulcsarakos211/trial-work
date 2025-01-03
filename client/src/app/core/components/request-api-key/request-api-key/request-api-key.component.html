@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center mt-5">
+        <h2>Request api key</h2>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+        <p>The api key is valid for a week starting from the time of the request.</p>
+    </div>
+    <form class="requestApikeyForm" (ngSubmit)="onSubmit()" #requestApikeyForm="ngForm">
+        <div class="form-group">
+            <label for="apikey">Api key</label>
+            <input type="text" [(ngModel)]="apikey.value" 
+            class="form-control input-lg"
+            type="text"
+            id="apikey"
+            name="apikey" 
+            readonly="readonly">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg">Request api key</button>
+        </div>
+    </form>
+</div>

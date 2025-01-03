@@ -3,6 +3,8 @@ import { UserService } from '../../services/user-service/user.service';
 import { NavbarService } from '../../../shared/services/navbar-service/navbar.service';
 import { Router } from '@angular/router';
 import { User } from '../../models/user/user';
+import { MembershipService } from '../../services/membership-service/membership.service';
+import { Room } from '../../models/room/room';
 
 @Component({
   selector: 'app-create-user',
@@ -15,10 +17,13 @@ export class CreateUserComponent {
 
   userExists: boolean;
   user: User;
+  defaultRoom: Room;
 
-  constructor(private userService: UserService, private navbarService: NavbarService, private router: Router) {
+  constructor(private userService: UserService, private membershipService: MembershipService, private navbarService: NavbarService, private router: Router) {
     this.userExists = false;
     this.user = new User();
+    this.defaultRoom = new Room();
+    this.defaultRoom.id = 1;
   }
 
   async onSubmit() {
@@ -27,7 +32,7 @@ export class CreateUserComponent {
       existingUser = user;
       if (existingUser === null) {
         this.user.password = "secretpassword";
-        this.userService.save(this.user).subscribe();
+        this.userService.save(this.user).subscribe(user => this.membershipService.addUserToRoom(user!, this.defaultRoom).subscribe());
         alert("New user registered!");
         this.gotoHome();
       }

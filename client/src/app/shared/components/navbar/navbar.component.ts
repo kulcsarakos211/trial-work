@@ -26,8 +26,12 @@ export class NavbarComponent {
     this.router.navigate(["/logout"]);
   }
 
-  gotoMessages() {
-    this.router.navigate(["/messages"]);
+  gotoNotifications() {
+    this.router.navigate(["/notifications"]);
+  }
+
+  requestApiKey() {
+    this.router.navigate(["/apikey"]);
   }
 
   createUser() {

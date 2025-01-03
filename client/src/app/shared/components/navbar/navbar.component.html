@@ -10,9 +10,12 @@
           <a class="nav-link" [routerLink]="[]" (click)="gotoRooms()">Rooms</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="[]" (click)="gotoMessages()">Messages</a>
+          <a class="nav-link" [routerLink]="[]" (click)="gotoNotifications()">Notifications</a>
         </li>
       </ul>
+      <form class="form-inline my-2 my-lg-0" (ngSubmit)="requestApiKey()" *ngIf="navbarService.isAdmin()">
+        <button class="btn my-2 my-sm-0 btn-success" type="submit">Request Api Key</button>
+      </form>
       <form class="form-inline my-2 my-lg-0" (ngSubmit)="createUser()" *ngIf="navbarService.isAdmin()">
         <button class="btn my-2 my-sm-0 btn-success" type="submit">Create user</button>
       </form>

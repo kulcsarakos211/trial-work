@@ -34,7 +34,7 @@ export class UserService {
     return this.http.patch<User>(this.usersUrl, user);
   }
 
-  public save(user: User) {
-    return this.http.post<User>(this.usersUrl, user);
+  public save(user: User): Observable<User | null> {
+    return this.http.post<User | null>(this.usersUrl, user);
   }
 }

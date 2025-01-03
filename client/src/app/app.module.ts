@@ -15,6 +15,7 @@ import { HomeComponent } from './core/components/home/home.component';
 import { CreateUserComponent } from './core/components/create-user/create-user.component';
 import { FirstLoginComponent } from './core/components/first-login/first-login.component';
 import { RoomListComponent } from './core/components/room-list/room-list/room-list.component';
+import { RequestApiKeyComponent } from './core/components/request-api-key/request-api-key/request-api-key.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RoomListComponent } from './core/components/room-list/room-list/room-li
     HomeComponent,
     CreateUserComponent,
     FirstLoginComponent,
-    RoomListComponent
+    RoomListComponent,
+    RequestApiKeyComponent
   ],
   imports: [
     BrowserModule,

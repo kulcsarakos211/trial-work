@@ -33,11 +33,6 @@ public class RoomController {
         return roomRepository.findAllByUserId(userId);
     }
 
-    @PostMapping(value = "/rooms/adduser", params = "roomId")
-    void addUserToRoom(@RequestBody User user, @RequestParam("roomId") long roomId) {
-        // TODO: figure out how to interact with Join Tables
-    }
-
     @PostMapping("/rooms")
     void addRoom(@RequestBody Room room) {
         roomRepository.save(room);

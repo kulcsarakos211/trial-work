@@ -15,9 +15,4 @@ public class TrialWorkBackendApplication {
         SpringApplication.run(TrialWorkBackendApplication.class, args);
     }
 
-    @Bean
-    CommandLineRunner init(UserRepository userRepository, RoomRepository roomRepository, NotificationRepository notificationRepository, RoomTogglesRepository roomTogglesRepository, ToggleRepository toggleRepository) {
-        return args -> {
-        };
-    }
 }

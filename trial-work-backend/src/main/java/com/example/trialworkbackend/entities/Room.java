@@ -1,7 +1,7 @@
 package com.example.trialworkbackend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
@@ -21,12 +21,8 @@ public class Room {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinTable(name = "members",
-            joinColumns = @JoinColumn(name = "room_id", referencedColumnName = "id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    )
-    private List<User> members;
+    @OneToMany(mappedBy = "room")
+    private List<Membership> members;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "room_toggles",
@@ -59,7 +55,8 @@ public class Room {
         this.name = name;
     }
 
-    public List<User> getMembers() {
+    @JsonIgnore
+    public List<Membership> getMembers() {
         return members;
     }
 

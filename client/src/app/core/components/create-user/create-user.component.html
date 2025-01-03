@@ -14,7 +14,7 @@
             id="email"
             name="email" 
             placeholder="john.doe@example.com"
-            required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" #email="ngModel">
+            required pattern="^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$" #email="ngModel">
         </div>
         <div [hidden]="!email.hasError('pattern')" class="alert alert-danger alert-div">Email address is required</div>
         <div [hidden]="!userExists" class="alert alert-danger alert-div">The email adress is already registered</div>

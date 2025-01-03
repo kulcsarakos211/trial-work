@@ -1,7 +1,10 @@
 package com.example.trialworkbackend.controllers;
 
+import com.example.trialworkbackend.entities.Room;
 import com.example.trialworkbackend.entities.User;
+import com.example.trialworkbackend.entities.Membership;
 import com.example.trialworkbackend.repositories.UserRepository;
+import com.example.trialworkbackend.repositories.MembershipRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,9 +44,9 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    void addUser(@RequestBody User user) {
+    public User addUser(@RequestBody User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        return userRepository.save(user);
     }
 
     @Transactional
